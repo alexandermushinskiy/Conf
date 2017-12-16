@@ -1,15 +1,14 @@
-using System;
 using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Conf.Management.Domain.Interfaces.Repositories;
-using Conf.Management.Domain.Entities;
+using Conf.Management.Extensibility.Repositories;
+using Conf.Management.Entities;
 using Conf.Management.WebApi.Models.Responses;
 using Conf.Management.WebApi.Models.Requests;
-using Conf.Management.Domain.Commands;
-using Conf.Management.Domain.Interfaces.Handlers;
-using Conf.Management.Domain.Interfaces.Dao;
-using Conf.Management.Domain.Dao.Models;
-using AutoMapper;
+using Conf.Management.Commands;
+using Conf.Management.Extensibility.Dao;
+using Conf.Management.Dao.Models;
+using Conf.Infrastructure.Extensibility.Messaging;
 
 namespace Conf.Management.WebApi.Controllers
 {

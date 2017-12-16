@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
-using Conf.Management.Domain.Commands;
-using Conf.Management.Domain.Interfaces.Providers;
+using Conf.Management.Commands;
+using Conf.Management.Extensibility.Providers;
 using Conf.Management.WebApi.Models.Requests;
 
 namespace Conf.Management.WebApi.Resolvers

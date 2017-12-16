@@ -20,6 +20,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Conf.Infrastructure\Conf.Infrastructure.csproj" />
     <ProjectReference Include="..\Conf.Management.DataAccess\Conf.Management.DataAccess.csproj" />
     <ProjectReference Include="..\Conf.Management\Conf.Management.csproj" />
   </ItemGroup>
