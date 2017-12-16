@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Conf.Management.Entities;
-using Conf.Management.Infrastructure.DataAccess.Database.EntityConfigurations;
+using Conf.Management.DataAccess.Database.EntityConfigurations;
 
-namespace Conf.Management.Infrastructure.DataAccess.Database
+namespace Conf.Management.DataAccess.Database
 {
     public class ConfManagementDbContext : DbContext
     {

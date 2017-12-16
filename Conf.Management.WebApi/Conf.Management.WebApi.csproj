@@ -21,7 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conf.Infrastructure\Conf.Infrastructure.csproj" />
-    <ProjectReference Include="..\Conf.Management.DataAccess\Conf.Management.DataAccess.csproj" />
     <ProjectReference Include="..\Conf.Management\Conf.Management.csproj" />
   </ItemGroup>
 

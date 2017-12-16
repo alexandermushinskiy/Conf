@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conf.Infrastructure", "Conf.Infrastructure\Conf.Infrastructure.csproj", "{8E253BC4-1A4B-4FE9-A31B-FB85CEB74E7B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conf.Management", "Conf.Management\Conf.Management.csproj", "{4F2D3380-1D52-4BDD-B1E0-2FC0460FB72A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conf.Management.DataAccess", "Conf.Management.DataAccess\Conf.Management.DataAccess.csproj", "{67020A3D-9BED-4962-AA18-39379F9BBA85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conf.Management.WebApi", "Conf.Management.WebApi\Conf.Management.WebApi.csproj", "{5A4D51E6-F4A7-4B17-A1EB-C2DC1F9F26C7}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{4F2D3380-1D52-4BDD-B1E0-2FC0460FB72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F2D3380-1D52-4BDD-B1E0-2FC0460FB72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F2D3380-1D52-4BDD-B1E0-2FC0460FB72A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67020A3D-9BED-4962-AA18-39379F9BBA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67020A3D-9BED-4962-AA18-39379F9BBA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67020A3D-9BED-4962-AA18-39379F9BBA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67020A3D-9BED-4962-AA18-39379F9BBA85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A4D51E6-F4A7-4B17-A1EB-C2DC1F9F26C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A4D51E6-F4A7-4B17-A1EB-C2DC1F9F26C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A4D51E6-F4A7-4B17-A1EB-C2DC1F9F26C7}.Release|Any CPU.ActiveCfg = Release|Any CPU

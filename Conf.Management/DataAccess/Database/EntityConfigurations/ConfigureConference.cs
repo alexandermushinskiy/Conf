@@ -1,7 +1,7 @@
 ﻿using Conf.Management.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Conf.Management.Infrastructure.DataAccess.Database.EntityConfigurations
+namespace Conf.Management.DataAccess.Database.EntityConfigurations
 {
     internal static class ConferenceConfiguration
     {

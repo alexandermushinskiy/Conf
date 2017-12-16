@@ -48,7 +48,6 @@ namespace Conf.Management.WebApi
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule<AutofacModule>();
-            builder.RegisterModule<DataAccessAutofacModule>();
             builder.RegisterModule<WebApiAutofacModule>();
         }
     }

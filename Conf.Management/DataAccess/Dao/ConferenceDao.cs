@@ -3,9 +3,9 @@ using System.Linq;
 using Conf.Management.Dao.Models;
 using Conf.Management.Entities;
 using Conf.Management.Extensibility.Dao;
-using Conf.Management.Infrastructure.DataAccess.Dummy;
+using Conf.Management.DataAccess.Dummy;
 
-namespace Conf.Management.Infrastructure.DataAccess.Dao
+namespace Conf.Management.DataAccess.Dao
 {
     internal class ConferenceDao : IConferenceDao
     {
