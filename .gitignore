@@ -1,0 +1,8 @@
+/Conf.Infrastructure/obj
+/Conf.Infrastructure/bin
+/Conf.Management/bin
+/Conf.Management/obj
+/Conf.Management.DataAccess/obj
+/Conf.Management.DataAccess/bin
+/Conf.Management.WebApi/obj
+/Conf.Management.WebApi/bin
