@@ -6,3 +6,5 @@
 /Conf.Management.DataAccess/bin
 /Conf.Management.WebApi/obj
 /Conf.Management.WebApi/bin
+*.user
+*.user
