@@ -1,0 +1,28 @@
+<div class="row" *ngIf="conference">
+  <div class="col-xs-10 conference">
+    <div class="row">
+      <div class="col-md-12 detail">
+        <label class="label-text">Name</label>
+        <div>{{ conference.name }}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 detail">
+        <label class="label-text">Description</label>
+        <div>{{ conference.description }}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 detail">
+        <label class="label-text">Location</label>
+        <div>{{ conference.location }}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 detail">
+        <label class="label-text">Time</label>
+        <div>Start at {{ conference.startDate }} - Finish at {{ conference.finishDate }}</div>
+      </div>
+    </div>
+  </div>
+</div>

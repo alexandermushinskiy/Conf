@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <h1><strong>CMS:</strong> Conference Management</h1>
+      <div class="description">
+        <p>
+          This is a free online service that will enable you to plan, organize and manage conferences and events that are held at a
+          physical location. Register, customize and use it!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="loginbox" style="margin-top: 50px;" class="col-md-8 col-md-offset-2">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <div class="panel-title">Open your conference</div>
+            <div style="float: right; font-size: 80%; position: relative; top: -10px"></div>
+          </div>
+
+          <div style="padding-top: 30px" class="panel-body">
+
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+            <form role="form" data-toggle="validator" id="loginform" name="loginform" class="form-horizontal container-fluid" (submit)="login()"
+              autocomplete="off" novalidate>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div style="margin-bottom: 15px" class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" name="email" class="form-control" [(ngModel)]="email" placeholder="Email Address" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div style="margin-bottom: 15px" class="input-group">
+                    <span class="input-group-addon">
+                      <i class="icon-lock icons"></i>
+                    </span>
+                    <input class="form-control" type="password" name="accessCode" [(ngModel)]="accessCode" placeholder="Access Code"
+                      required>
+                    <span class="input-group-btn">
+                      <button class="btn btn-login" type="submit" btnLoading="loading">Go!
+                        <i *ngIf="dataLoading" class="fa fa-spinner fa-spin"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="login-register-text">
+                    Do you plan to hold a conference but it is not registered yet?
+                    <a href="#" routerLink="/register">Create it Here</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

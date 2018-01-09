@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Conf.Management.Dao.Models;
 using Conf.Management.Entities;
@@ -9,17 +10,23 @@ namespace Conf.Management.DataAccess.Dao
 {
     internal class ConferenceDao : IConferenceDao
     {
-        private static readonly List<Conference> ConferenceStore = DummyStorage.GetData().ToList();
-
-        public ConferenceDetails GetConferenceDetails(string conferenceCode)
+        public ConferenceDetails Locate(string ownerEmail, string conferenceCode)
         {
-            return ConferenceStore
-                .Where(c => c.AccessCode == conferenceCode)
+            return DummyConferencesStorage.Storage
+                .Where(conf => conf.Organizer.Email == ownerEmail && conf.AccessCode == conferenceCode)
                 .Select(ConvertToDaoModel)
                 .FirstOrDefault();
         }
 
-        private ConferenceDetails ConvertToDaoModel(Conference conference)
+        public ConferenceDetails GetConferenceDetails(Guid conferenceId)
+        {
+            return DummyConferencesStorage.Storage
+                .Where(c => c.Id == conferenceId)
+                .Select(ConvertToDaoModel)
+                .FirstOrDefault();
+        }
+
+        private static ConferenceDetails ConvertToDaoModel(Conference conference)
         {
             if (conference == null)
             {
@@ -32,7 +39,8 @@ namespace Conf.Management.DataAccess.Dao
                 conference.Name,
                 conference.Description,
                 conference.Venue,
-                conference.StartDate);
+                conference.StartDate,
+                conference.FinishDate);
         }
     }
 }

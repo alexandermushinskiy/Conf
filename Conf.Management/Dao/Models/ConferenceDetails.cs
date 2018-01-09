@@ -4,7 +4,7 @@ namespace Conf.Management.Dao.Models
 {
     public class ConferenceDetails
     {
-        public ConferenceDetails(Guid id, string code, string name, string description, string location, DateTime startDate)
+        public ConferenceDetails(Guid id, string code, string name, string description, string location, DateTime startDate, DateTime finishDate)
         {
             Id = id;
             Code = code;
@@ -12,6 +12,7 @@ namespace Conf.Management.Dao.Models
             Description = description;
             Location = location;
             StartDate = startDate;
+            FinishDate = finishDate;
         }
 
         public Guid Id { get; }
@@ -25,5 +26,7 @@ namespace Conf.Management.Dao.Models
         public string Location { get; }
 
         public DateTimeOffset StartDate { get; }
+
+        public DateTimeOffset FinishDate { get; }
     }
 }

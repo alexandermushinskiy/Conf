@@ -1,0 +1,20 @@
+<table class="orders-table">
+  <thead>
+    <tr>
+      <th>Access Code</th>
+      <th>Status</th>
+      <th>Total Amount</th>
+      <th>Registrant Name</th>
+      <th>Registrant Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.accessCode }}</td>
+      <td>{{ order.status === orderStatus.Paid ? 'Paid' : 'Pending' }}</td>
+      <td>{{ order.totalAmount }}</td>
+      <td>{{ order.registrantName }}</td>
+      <td>{{ order.registrantEmail }}</td>
+    </tr>
+  </tbody>
+</table>

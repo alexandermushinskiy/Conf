@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using AutoMapper;
-using Conf.Management.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,9 +11,11 @@ namespace Conf.Management.WebApi
 {
     public class Startup
     {
+        private const string CorsPolicyName = "CorsPolicy";
+
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
+            IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
@@ -28,6 +29,16 @@ namespace Conf.Management.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    CorsPolicyName,
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
+                        .AllowCredentials());
+            });
 
             services.AddMvc()
                 .AddJsonOptions(options =>
@@ -42,6 +53,7 @@ namespace Conf.Management.WebApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors(CorsPolicyName);
             app.UseMvc();
         }
 

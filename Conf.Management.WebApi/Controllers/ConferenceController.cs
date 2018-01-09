@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +13,12 @@ using Conf.Infrastructure.Extensibility.Messaging;
 
 namespace Conf.Management.WebApi.Controllers
 {
-    [Produces("application/json")]
     [Route("api/[controller]")]
     public class ConferencesController : Controller
     {
         private readonly ICommandHandler<CreateConferenceCommand> createConferenceCommandHandler;
         private readonly IConferenceDao conferenceDao;
+        private readonly IOrderDao orderDao;
         private readonly IConferenceRepository conferenceRepository;
         private readonly IMapper mapper;
 
@@ -25,40 +26,60 @@ namespace Conf.Management.WebApi.Controllers
             IMapper mapper,
             ICommandHandler<CreateConferenceCommand> createConferenceCommandHandler,
             IConferenceDao conferenceDao,
+            IOrderDao orderDao,
             IConferenceRepository conferenceRepository)
         {
             this.createConferenceCommandHandler = createConferenceCommandHandler;
             this.conferenceDao = conferenceDao;
+            this.orderDao = orderDao;
             this.mapper = mapper;
 
             this.conferenceRepository = conferenceRepository;
         }
 
-        [HttpGet]
+        [HttpPost("locate")]
+        public IActionResult Locate([FromBody]LocateRequestModel locateRequestModel)
+        {
+            ConferenceDetails conferenceDetails = conferenceDao.Locate(locateRequestModel.Email, locateRequestModel.AccessCode);
+            if (conferenceDetails == null)
+            {
+                return NotFound("Conference is not found");
+            }
+            return Ok(conferenceDetails);
+        }
+
+        [HttpGet("all")]
         public IEnumerable<Conference> Get()
         {
             return conferenceRepository.GetAll();
         }
 
-        [HttpGet("details")]
-        public IActionResult GetConferenceDetails(string conferenceCode)
+        [HttpGet("{conferenceId:guid}")]
+        public IActionResult GetConferenceDetails(Guid conferenceId)
         {
-            ConferenceDetails conferenceDetails = conferenceDao.GetConferenceDetails(conferenceCode);
+            ConferenceDetails conferenceDetails = conferenceDao.GetConferenceDetails(conferenceId);
             if (conferenceDetails == null)
             {
-                return NotFound($"Conference with code {conferenceCode} is not found");
+                return NotFound($"Conference with id {conferenceId} is not found");
             }
             return Ok(conferenceDetails);
         }
 
-        [HttpPost("create")]
-        public IActionResult Create([FromBody]CreateRequestModel createRequestModel)
+        [HttpPost()]
+        public IActionResult Post([FromBody]CreateRequestModel createRequestModel)
         {
             CreateConferenceCommand command = mapper.Map<CreateConferenceCommand>(createRequestModel);  
             createConferenceCommandHandler.Handle(command);
 
             CreateResponseModel response = new CreateResponseModel { Id = command.Id };
-            return Created($"api/details/{command.AccessCode}", response);
+            return Created($"api/details/{command.Id}", response);
+        }
+
+        [HttpGet("{conferenceId:guid}/orders")]
+        public IActionResult GetOrders(Guid conferenceId)
+        {
+            IEnumerable<Order> orders = orderDao.GetConferenceOrders(conferenceId);
+            return Ok(orders);
         }
     }
 }

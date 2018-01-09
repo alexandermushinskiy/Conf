@@ -40,6 +40,7 @@ namespace Conf.Management
         private static void RegisterDaos(ContainerBuilder builder)
         {
             builder.RegisterType<ConferenceDao>().As<IConferenceDao>();
+            builder.RegisterType<OrderDao>().As<IOrderDao>();
         }
     }
 }

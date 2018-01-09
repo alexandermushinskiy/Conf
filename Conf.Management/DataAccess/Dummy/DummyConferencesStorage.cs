@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Conf.Management.Entities;
 
 namespace Conf.Management.DataAccess.Dummy
 {
-    internal static class DummyStorage
+    internal static class DummyConferencesStorage
     {
-        public static IEnumerable<Conference> GetData()
+        private static List<Conference> storage;
+        public static List<Conference> Storage => storage ?? (storage = GetInitialData().ToList());
+
+        private static IEnumerable<Conference> GetInitialData()
         {
             return new[]
             {
