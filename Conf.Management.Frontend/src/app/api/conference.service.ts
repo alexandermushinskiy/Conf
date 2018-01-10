@@ -91,7 +91,7 @@ export class ConferenceService {
 
   private convertDate(date: string) {
     const utcDate = moment.utc(date, 'YYYY-MM-DD HH:mm:ss');
-    return moment(utcDate).local().format('DD MMM YYYY HH:mm');
+    return moment(utcDate).local().format('DD MMM, YYYY');
   }
 
   private getRequestOptions() {
