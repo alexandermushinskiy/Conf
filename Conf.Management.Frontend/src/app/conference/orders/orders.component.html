@@ -6,6 +6,7 @@
       <th>Total Amount</th>
       <th>Registrant Name</th>
       <th>Registrant Email</th>
+      <th>Attendees</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,13 @@
       <td>{{ order.totalAmount }}</td>
       <td>{{ order.registrantName }}</td>
       <td>{{ order.registrantEmail }}</td>
+      <td>
+        <ul class="attendees">
+          <li *ngFor="let seat of order.seats">
+            {{ seat.name }}: {{ seat.attendee.firstName }} {{ seat.attendee.lastName }}
+          </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>

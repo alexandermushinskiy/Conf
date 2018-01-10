@@ -9,6 +9,8 @@ import { Order } from '../shared/models/order.model';
 import { OrderStatus } from '../shared/enums/order-status.enum';
 import { NewConference } from '../shared/models/new-conference.model';
 import { SeatType } from '../shared/models/seat-type.model';
+import { OrderSeat } from '../shared/models/order-seat.model';
+import { Attende } from '../shared/models/attendee.model';
 
 @Injectable()
 export class ConferenceService {
@@ -73,7 +75,8 @@ export class ConferenceService {
       OrderStatus[statusKey],
       response.totalAmount,
       response.registrantName,
-      response.registrantEmail);
+      response.registrantEmail,
+      response.seats.map(seat => new OrderSeat(seat.seatInfo.name, new Attende(seat.attendee))));
   }
 
   private convertToSeatTypeModel(response: any): SeatType {
