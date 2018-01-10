@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Conf.Infrastructure.Extensibility;
 using Conf.Management.Commands;
 
@@ -6,45 +7,23 @@ namespace Conf.Management.Entities
 {
     public class Conference : IAggregateRoot
     {
-        public Conference()
-        {
-        }
+        public Guid Id { get; set; }
 
-        public Conference(
-            Guid id,
-            string accessCode,
-            string name,
-            string description,
-            DateTime startDate,
-            DateTime finishDate,
-            ConferenceOrganizer organizer,
-            string venue)
-        {
-            Id = id;
-            AccessCode = accessCode;
-            Name = name;
-            Description = description;
-            StartDate = startDate;
-            FinishDate = finishDate;
-            Organizer = organizer;
-            Venue = venue;
-        }
+        public string AccessCode { get; set; }
 
-        public Guid Id { get; private set; }
+        public string Name { get; set; }
 
-        public string AccessCode { get; private set; }
+        public string Description { get; set; }
 
-        public string Name { get; private set; }
+        public DateTime StartDate { get; set; }
 
-        public string Description { get; private set; }
+        public DateTime FinishDate { get; set; }
 
-        public DateTime StartDate { get; private set; }
+        public ConferenceOrganizer Organizer { get; set; }
 
-        public DateTime FinishDate { get; private set; }
+        public string Venue { get; set; }
 
-        public ConferenceOrganizer Organizer { get; private set; }
-
-        public string Venue { get; private set; }
+        public IEnumerable<SeatType> SeatTypes { get; set; }
 
         public void Handle(CreateConferenceCommand createConferenceCommand)
         {

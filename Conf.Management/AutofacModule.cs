@@ -41,6 +41,7 @@ namespace Conf.Management
         {
             builder.RegisterType<ConferenceDao>().As<IConferenceDao>();
             builder.RegisterType<OrderDao>().As<IOrderDao>();
+            builder.RegisterType<SeatTypesDao>().As<ISeatTypesDao>();
         }
     }
 }

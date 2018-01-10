@@ -7,14 +7,6 @@ export class NewConference {
   startDate: Date;
   finishDate: Date;
 
-  constructor() {}
-
-  // constructor(public name: string,
-  //             public description: string,
-  //             public location: string,
-  //             public ownerName: string,
-  //             public ownerEmail: string,
-  //             public startDate: string,
-  //             public finishDate: string) {
-  // }
+  constructor() {
+  }
 }

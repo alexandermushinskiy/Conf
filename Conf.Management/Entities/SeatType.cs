@@ -6,6 +6,8 @@ namespace Conf.Management.Entities
     {
         public Guid Id { get; set; }
 
+        public Guid ConferenceId { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

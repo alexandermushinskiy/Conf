@@ -19,6 +19,7 @@ namespace Conf.Management.WebApi.Controllers
         private readonly ICommandHandler<CreateConferenceCommand> createConferenceCommandHandler;
         private readonly IConferenceDao conferenceDao;
         private readonly IOrderDao orderDao;
+        private readonly ISeatTypesDao seatTypesDao;
         private readonly IConferenceRepository conferenceRepository;
         private readonly IMapper mapper;
 
@@ -27,11 +28,13 @@ namespace Conf.Management.WebApi.Controllers
             ICommandHandler<CreateConferenceCommand> createConferenceCommandHandler,
             IConferenceDao conferenceDao,
             IOrderDao orderDao,
+            ISeatTypesDao seatTypesDao,
             IConferenceRepository conferenceRepository)
         {
             this.createConferenceCommandHandler = createConferenceCommandHandler;
             this.conferenceDao = conferenceDao;
             this.orderDao = orderDao;
+            this.seatTypesDao = seatTypesDao;
             this.mapper = mapper;
 
             this.conferenceRepository = conferenceRepository;
@@ -65,7 +68,7 @@ namespace Conf.Management.WebApi.Controllers
             return Ok(conferenceDetails);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult Post([FromBody]CreateRequestModel createRequestModel)
         {
             CreateConferenceCommand command = mapper.Map<CreateConferenceCommand>(createRequestModel);  
@@ -80,6 +83,13 @@ namespace Conf.Management.WebApi.Controllers
         {
             IEnumerable<Order> orders = orderDao.GetConferenceOrders(conferenceId);
             return Ok(orders);
+        }
+
+        [HttpGet("{conferenceId:guid}/seattypes")]
+        public IActionResult GetSeatTypes(Guid conferenceId)
+        {
+            IEnumerable<SeatType> seatTypes = seatTypesDao.GetConferenceSeatTypes(conferenceId);
+            return Ok(seatTypes);
         }
     }
 }

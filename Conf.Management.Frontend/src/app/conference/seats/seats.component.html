@@ -1,3 +1,18 @@
-<p>
-  seats works!
-</p>
+<table class="seat-types-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let seatType of seatTypes">
+        <td>{{ seatType.name }}</td>
+        <td>{{ seatType.description }}</td>
+        <td>{{ seatType.quantity }}</td>
+        <td>{{ seatType.price | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
