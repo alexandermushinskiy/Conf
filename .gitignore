@@ -8,3 +8,4 @@
 /Conf.Management.WebApi/bin
 *.user
 *.user
+.vs/Conf/v15/.suo
