@@ -23,7 +23,12 @@ namespace Conf.Management.Entities
 
         public string Venue { get; set; }
 
-        public IEnumerable<SeatType> SeatTypes { get; set; }
+        public IList<SeatType> SeatTypes { get; set; }
+
+        public Conference()
+        {
+            SeatTypes = new List<SeatType>();
+        }
 
         public void Handle(CreateConferenceCommand createConferenceCommand)
         {
@@ -35,6 +40,20 @@ namespace Conf.Management.Entities
             FinishDate = createConferenceCommand.FinishDate;
             Organizer = new ConferenceOrganizer(createConferenceCommand.OwnerName, createConferenceCommand.OwnerEmail);
             Venue = createConferenceCommand.Venue;
+        }
+
+        public void Handle(CreateSeatTypeCommand command)
+        {
+            SeatType seatType = new SeatType
+            {
+                Id = command.Id,
+                Name = command.Name,
+                Description = command.Description,
+                Quantity = command.Quantity,
+                Price = command.Price,
+                ConferenceId = Id
+            };
+            SeatTypes.Add(seatType);
         }
     }
 }

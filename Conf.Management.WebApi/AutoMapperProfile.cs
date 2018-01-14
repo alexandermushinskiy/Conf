@@ -12,6 +12,9 @@ namespace Conf.Management.WebApi
             CreateMap<CreateRequestModel, CreateConferenceCommand>()
                 .ForMember(dest => dest.Id, opt => opt.ResolveUsing<ConferenceIdResolver>())
                 .ForMember(dest => dest.AccessCode, opt => opt.ResolveUsing<ConferenceCodeResolver>());
+
+            CreateMap<CreateSeatTypeRequestModel, CreateSeatTypeCommand>()
+                .ForMember(dest => dest.Id, opt => opt.ResolveUsing<SeatTypeIdResolver>());
         }
     }
 }

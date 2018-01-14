@@ -7,24 +7,24 @@ using Conf.Management.Extensibility.Repositories;
 
 namespace Conf.Management.CommandHandlers
 {
-    public class ConferenceCommandHandler : ICommandHandler<CreateConferenceCommand>
+    internal class CreateSeatTypeCommandHandler : ICommandHandler<CreateSeatTypeCommand>
     {
         private readonly IConferenceRepository conferenceRepository;
 
-        public ConferenceCommandHandler(IConferenceRepository conferenceRepository)
+        public CreateSeatTypeCommandHandler(IConferenceRepository conferenceRepository)
         {
             this.conferenceRepository = conferenceRepository;
         }
 
-        public void Handle(CreateConferenceCommand command)
+        public void Handle(CreateSeatTypeCommand command)
         {
-            Conference conference = new Conference();
+            Conference conference = conferenceRepository.GetById(command.ConferenceId);
             conference.Handle(command);
 
-            conferenceRepository.Create(conference);
+            conferenceRepository.Update(conference);
         }
 
-        public Task HandleAsync(CreateConferenceCommand command)
+        public Task HandleAsync(CreateSeatTypeCommand command)
         {
             throw new NotImplementedException();
         }

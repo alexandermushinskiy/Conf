@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Dao\Models\Order.cs" />
+    <Compile Remove="Extensibility\Repositories\ISeatTypeRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

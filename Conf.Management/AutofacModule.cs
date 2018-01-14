@@ -30,6 +30,7 @@ namespace Conf.Management
         private static void RegisterCommandHandlers(ContainerBuilder builder)
         {
             builder.RegisterType<ConferenceCommandHandler>().As<ICommandHandler<CreateConferenceCommand>>();
+            builder.RegisterType<CreateSeatTypeCommandHandler>().As<ICommandHandler<CreateSeatTypeCommand>>();
         }
 
         private static void RegisterRepositories(ContainerBuilder builder)
