@@ -42,11 +42,11 @@ export class ConferenceService {
       .catch(() => Observable.throw('Unable to get conference orders'));
   }
 
-  getSeatTypes(conferenceId: string): Observable<SeatType[]> {
-    return this.http.get(`${this.endPoint}/${conferenceId}/seattypes`)
-      .map((res: any) => res.map(data => this.convertToSeatTypeModel(data)))
-      .catch(() => Observable.throw('Unable to get conference seat types'));
-  }
+  // getSeatTypes(conferenceId: string): Observable<SeatType[]> {
+  //   return this.http.get(`${this.endPoint}/${conferenceId}/seattypes`)
+  //     .map((res: any) => res.map(data => this.convertToSeatTypeModel(data)))
+  //     .catch(() => Observable.throw('Unable to get conference seat types'));
+  // }
 
   create(newConference: NewConference): Observable<string> {
     const requestData = JSON.stringify(newConference);
@@ -79,15 +79,15 @@ export class ConferenceService {
       response.seats.map(seat => new OrderSeat(seat.seatInfo.name, new Attende(seat.attendee))));
   }
 
-  private convertToSeatTypeModel(response: any): SeatType {
-    return new SeatType(
-      response.id,
-      response.name,
-      response.description,
-      response.quantity,
-      response.price
-    );
-  }
+  // private convertToSeatTypeModel(response: any): SeatType {
+  //   return new SeatType(
+  //     response.id,
+  //     response.name,
+  //     response.description,
+  //     response.quantity,
+  //     response.price
+  //   );
+  // }
 
   private convertDate(date: string) {
     const utcDate = moment.utc(date, 'YYYY-MM-DD HH:mm:ss');

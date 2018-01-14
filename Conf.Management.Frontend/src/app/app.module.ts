@@ -16,6 +16,7 @@ import { ConferenceService } from './api/conference.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConferenceComponent } from './conference/conference/conference.component';
 import { RegisterConferenceComponent } from './register-conference/register-conference.component';
+import { SeatTypeService } from './api/seat-type.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import { RegisterConferenceComponent } from './register-conference/register-conf
     AppRoutingModule,
     MyDatePickerModule
   ],
-  providers: [ConferenceService],
+  providers: [
+    ConferenceService,
+    SeatTypeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
