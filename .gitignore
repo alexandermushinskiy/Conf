@@ -9,3 +9,7 @@
 *.user
 *.user
 .vs/Conf/v15/.suo
+/.vs/Conf/v15/Server/sqlite3/*.lock
+/.vs/Conf/v15/Server/sqlite3/*.ide
+/.vs/Conf/v15/Server/sqlite3/*.ide-shm
+/.vs/Conf/v15/Server/sqlite3/*.ide-wal
